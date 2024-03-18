@@ -2,14 +2,14 @@
 # Sign Field
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.backends import default_backend
+ 
 
 def sign_field(data, private_key_file):
-    from cryptography.hazmat.primitives import hashes
-    from cryptography.hazmat.primitives.asymmetric import padding
-    from cryptography.hazmat.primitives import serialization
-    from cryptography.hazmat.backends import default_backend
-
-def sign_field(data, private_key_file):
+    
     # Load the private key from a PEM file
     with open(private_key_file, "rb") as key_file:
         private_key = serialization.load_pem_private_key(
@@ -31,13 +31,6 @@ def sign_field(data, private_key_file):
     # Return the signature in a format that can be easily stored or transmitted
     return signature.hex()
 
-
-# Verify Signature
-def verify_signature(data, signature, public_key_file):
-    from cryptography.hazmat.primitives import hashes
-    from cryptography.hazmat.primitives.asymmetric import padding
-    from cryptography.hazmat.primitives import serialization
-    from cryptography.hazmat.backends import default_backend
 
 def verify_signature(data, signature, public_key_file):
     # Load the public key from a PEM file

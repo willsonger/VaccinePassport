@@ -2,15 +2,17 @@
 # Symmetric Key Generation
 from cryptography.fernet import Fernet
 
+# Asymmetric Key Pair Generation
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives import serialization
+
 def generate_symmetric_key(filename):
     key = Fernet.generate_key()
     with open(filename, 'wb') as file:
         file.write(key)
 
-# Asymmetric Key Pair Generation
-from cryptography.hazmat.backends import default_backend
-from cryptography.hazmat.primitives.asymmetric import rsa
-from cryptography.hazmat.primitives import serialization
+
 
 def generate_asymmetric_keys(public_key_filename, private_key_filename):
     private_key = rsa.generate_private_key(
